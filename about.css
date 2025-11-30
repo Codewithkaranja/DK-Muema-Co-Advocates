@@ -1,7 +1,7 @@
 /* CSS Variables for Brand Colors */
 :root {
   --navy: #002b5c;
-  --charcoal: #333333;
+  --charcoal: #141313;
   --gold: #b38b59;
   --light-gray: #f8f9fa;
   --white: #ffffff;
@@ -25,7 +25,7 @@
 
 body {
   line-height: 1.7;
-  color: var(--charcoal);
+  color: black;
   background-color: var(--white);
   overflow-x: hidden;
 }
@@ -264,6 +264,7 @@ nav ul li .btn:hover {
   justify-content: center;
   position: relative;
   overflow: hidden;
+ 
 }
 
 .page-header::before {
@@ -283,10 +284,14 @@ nav ul li .btn:hover {
 
 .page-header h1 {
   font-size: 3.5rem;
-  color: var(--white);
+  color: rgb(233, 201, 24);
   margin-bottom: 25px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
+
 
 .breadcrumb {
   display: flex;
@@ -322,13 +327,65 @@ nav ul li .btn:hover {
   background: rgba(84, 102, 21, 0.3);
 }
 
-/* About Intro */
-.about-intro {
-  background: linear-gradient(135deg, #ffffff 0%, var(--light-gray) 100%);
-  position: relative;
-  overflow: hidden;
+/* Background Zoom Animation */
+@keyframes headerZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.15);
+  }
 }
 
+/* Text Fade & Slide Animation */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply the background animation */
+.page-header {
+  animation: headerZoom 12s ease-in-out infinite alternate;
+  position: relative;
+}
+
+/* Animate heading and breadcrumb */
+.page-header h1,
+.page-header .breadcrumb {
+  animation: fadeSlideUp 1.2s ease forwards;
+  opacity: 0;
+}
+
+/* Delay breadcrumb slightly for smooth staggered animation */
+.page-header .breadcrumb {
+  animation-delay: 0.4s;
+}
+
+
+/* About Intro Section */
+.about-intro {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.35),
+      rgba(255, 255, 255, 0.35)
+    ),
+    url("https://images.unsplash.com/photo-1555371363-8f2a7c2d06f8?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0;
+  filter: brightness(1.05) contrast(1.05);
+}
+
+
+/* Grid Layout */
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -338,12 +395,16 @@ nav ul li .btn:hover {
   z-index: 2;
 }
 
+/* Text Styling */
 .about-text h2 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   margin-bottom: 25px;
   color: var(--mutindamaroon);
   position: relative;
   padding-bottom: 15px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .about-text h2::after {
@@ -351,7 +412,7 @@ nav ul li .btn:hover {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 80px;
+  width: 100px;
   height: 4px;
   background: linear-gradient(90deg, var(--mutindamaroon), var(--mutindagreen));
   border-radius: 2px;
@@ -360,14 +421,28 @@ nav ul li .btn:hover {
 .about-text p {
   font-size: 1.1rem;
   color: var(--charcoal);
-  margin-bottom: 20px;
-  line-height: 1.8;
+  margin-bottom: 18px;
+  line-height: 1.9;
 }
 
-.about-image {
-  position: relative;
+/* Button Styling */
+.about-text .btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: var(--mutindagreen);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
 }
 
+.about-text .btn:hover {
+  background: var(--mutindamaroon);
+  transform: translateY(-2px);
+}
+
+/* Image Styling */
 .about-image img {
   width: 100%;
   border-radius: 16px;
@@ -376,22 +451,38 @@ nav ul li .btn:hover {
   border: 8px solid var(--white);
 }
 
-.about-image::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  right: 20px;
-  bottom: 20px;
-  background: linear-gradient(135deg, var(--mutindamaroon), var(--mutindagreen));
-  border-radius: 16px;
-  z-index: -1;
-  opacity: 0.1;
-}
-
 .about-image:hover img {
   transform: translate(-10px, -10px);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Scroll fade-in animations */
+.about-text,
+.about-image {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.about-text.visible,
+.about-image.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .about-image img {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .about-text h2 {
+    font-size: 2.2rem;
+  }
 }
 
 /* Mission & Vision */
@@ -481,9 +572,15 @@ nav ul li .btn:hover {
   position: relative;
   overflow: hidden;
 }
+.team h2{
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+ 
+}
 
 .team .section-title {
-  color: var(--white);
+  color:var(--mutindagreen-dark);
   position: relative;
   z-index: 2;
 }
@@ -580,17 +677,33 @@ nav ul li .btn:hover {
   transform: translateX(-50%);
   width: 30px;
   height: 2px;
-  background: var(--mutindagreen);
+  background: white;
   border-radius: 1px;
 }
 
 .member-bio {
   font-size: 1rem;
-  color: var(--charcoal);
+  color: black;
   line-height: 1.7;
 }
 
 /* Values Section */
+/* Values Section Background */
+.values {
+  background: linear-gradient(rgba(23, 46, 68, 0.85), rgba(23, 46, 68, 0.85)),
+              url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 0;
+  position: relative;
+  color: var(--white);
+}
+
+
 .values-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -600,9 +713,10 @@ nav ul li .btn:hover {
 .value-card {
   text-align: center;
   padding: 50px 30px;
-  background: linear-gradient(135deg, var(--white) 0%, #f8f9fa 100%);
-  border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, black 0%, var(--mutindamaroon-dark)70%);
+  
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
@@ -614,50 +728,41 @@ nav ul li .btn:hover {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
+  width: 100%;
   height: 4px;
   background: linear-gradient(90deg, var(--mutindamaroon), var(--mutindagreen));
 }
 
 .value-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 25px 60px rgba(84, 102, 21, 0.15);
+  box-shadow: 0 20px 50px rgba(84, 102, 21, 0.15);
 }
 
 .value-icon {
-  font-size: 55px;
-  color: var(--mutindamaroon);
+  font-size: 50px;
+  color: var(--mutindagreen);
   margin-bottom: 25px;
   transition: all 0.4s ease;
 }
 
 .value-card:hover .value-icon {
-  color: var(--mutindagreen);
-  transform: scale(1.1) rotate(5deg);
+  color: var(--mutindamaroon-dark);
+  transform: scale(1.1);
 }
 
 .value-card h3 {
   font-size: 1.5rem;
   margin-bottom: 20px;
-  color: var(--mutindamaroon);
-  position: relative;
-  padding-bottom: 15px;
+  color: var(--mutindagreen);
+  transition: color 0.3s ease;
 }
 
-.value-card h3::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 3px;
-  background: var(--mutindagreen);
-  border-radius: 2px;
+.value-card:hover h2 {
+  color: var(--mutindamaroon-dark);
 }
 
 .value-card p {
-  color: var(--charcoal);
+  color: white;
   line-height: 1.7;
   font-size: 1rem;
 }
@@ -670,7 +775,7 @@ nav ul li .btn:hover {
 }
 
 .history .section-title {
-  color: var(--white);
+  color: var(--mutindagreen-dark);
 }
 
 .timeline {
@@ -868,7 +973,7 @@ nav ul li .btn:hover {
 }
 
 .cta h1 {
-  color: var(--white);
+  color: rgb(233, 201, 24);
   font-size: 3rem;
   margin-bottom: 25px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);

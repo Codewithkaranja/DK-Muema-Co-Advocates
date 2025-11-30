@@ -145,7 +145,7 @@ header {
   z-index: 1000;
   box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
   height: 100px;
-  transition: all 0.4s ease;
+  transition: all 1.4s ease;
 }
 
 .header-container {

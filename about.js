@@ -35,3 +35,18 @@
           header.style.backgroundColor = "var(--white)";
         }
       });
+
+      // Reveal on scroll effect
+const elements = document.querySelectorAll('.about-text, .about-image');
+
+function revealElements() {
+  elements.forEach(el => {
+    const position = el.getBoundingClientRect().top;
+    if (position < window.innerHeight - 100) {
+      el.classList.add('visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealElements);
+revealElements();
