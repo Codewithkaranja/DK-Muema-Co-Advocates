@@ -5,7 +5,7 @@ const path = require('path');
 const projectDir = 'D:/MY PROJECTS/Musyoka&Mutinda Advocates';
 
 // Your website base URL
-const baseUrl = 'https://musyokamutindaadv.co.ke/';
+const baseUrl = 'https://dkmuemaadvocates.co.ke/';
 
 // Function to recursively find all HTML files
 function getHtmlFiles(dir) {

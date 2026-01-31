@@ -1,19 +1,53 @@
 /* CSS Variables for Brand Colors */
 :root {
-  --navy: #002b5c;
-  --charcoal: #333333;
-  --gold: #b38b59;
-  --light-gray: #f8f9fa;
+  /* =========================
+     CORE BLUE PALETTE
+  ========================= */
+  --navy: #0a1f44;
+  --royal-blue: #0d47a1;
+  --sky-blue: #1e88e5;
+  --ice-blue: #e3f2fd;
+
+  /* =========================
+     NEUTRALS
+  ========================= */
+  --charcoal: #1f2933;
+  --slate: #4b5563;
+  --light-gray: #f5f7fb;
   --white: #ffffff;
-  --mutindagreen: #9D863F;
-  --mutindamaroon: rgb(0, 195, 255);
-  --mutindagreen-light: rgba(84, 102, 21, 0.1);
-  --mutindamaroon-light: rgba(119, 4, 4, 0.1);
-  --mutindagreen-dark: rgb(0, 195, 255);
-  --mutindamaroon-dark: rgb(95, 3, 3);
-  --gradient-primary: linear-gradient(135deg, var(--mutindamaroon), var(--mutindagreen));
-  --gradient-secondary: linear-gradient(135deg, var(--mutindagreen), var(--mutindagreen-dark));
+
+  /* =========================
+     ACCENTS (Luxury Feel)
+  ========================= */
+  --gold: #c7a14a;
+  --steel-blue: #90caf9;
+
+  /* =========================
+     BRAND CUSTOM VARIABLES
+  ========================= */
+  --mutindagreen: #1e88e5;
+  --mutindamaroon: #0d47a1;
+  --mutindagreen-light: rgba(30, 136, 229, 0.12);
+  --mutindamaroon-light: rgba(13, 71, 161, 0.12);
+  --mutindagreen-dark: #0b3c78;
+  --mutindamaroon-dark: #061a3a;
+
+  /* =========================
+     GRADIENTS
+  ========================= */
+  --gradient-primary: linear-gradient(135deg, #0d47a1 0%, #1e88e5 100%);
+  --gradient-secondary: linear-gradient(135deg, #061a3a 0%, #0a1f44 100%);
+  --gradient-soft: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+
+  /* =========================
+     UI HELPERS
+  ========================= */
+  --shadow-soft: 0 10px 30px rgba(13, 71, 161, 0.15);
+  --shadow-strong: 0 20px 50px rgba(6, 26, 58, 0.35);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
 }
+
 
 /* Global Styles */
 * {
@@ -164,18 +198,29 @@ html {
 }
 
 /* Header & Navigation */
+/* Header & Navigation */
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(15px);
-  z-index: 1000;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
   height: 100px;
-  transition: all 0.4s ease;
+
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+
+  z-index: 1000;
+  transition: background 0.3s ease;
 }
+
+/* Keep it transparent even after scroll */
+header.scrolled {
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
 
 .header-container {
   max-width: 1200px;
@@ -218,7 +263,7 @@ nav ul {
 nav ul li a {
   text-decoration: none;
   font-weight: 500;
-  color: var(--charcoal);
+  color: aliceblue;
   font-size: 16px;
   padding: 8px 2px;
   transition: all 0.3s ease;
@@ -233,7 +278,7 @@ nav ul li a::after {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--gradient-primary);
+  background: linear-gradient(90deg, var(--mutindamaroon), var(--mutindagreen));
   transition: width 0.3s ease;
 }
 
@@ -278,7 +323,7 @@ nav ul li .btn:hover {
 
 /* Page Header */
 .page-header {
-  background: linear-gradient(135deg, rgba(119, 4, 4, 0.85), rgba(84, 102, 21, 0.75)),
+  background: linear-gradient(135deg, rgba(5, 23, 83, 0.975), rgba(84, 102, 21, 0.75)),
               url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80");
   background-size: cover;
   background-position: center;
@@ -292,6 +337,7 @@ nav ul li .btn:hover {
   justify-content: center;
   position: relative;
   overflow: hidden;
+  margin-top: 0px;
 }
 
 .page-header::before {
@@ -1333,7 +1379,7 @@ footer {
     top: 100px;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.98);
+    background: black;
     backdrop-filter: blur(15px);
     flex-direction: column;
     padding: 30px 20px;

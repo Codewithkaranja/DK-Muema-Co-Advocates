@@ -1,40 +1,61 @@
 /* CSS Variables for Brand Colors - Enhanced Palette */
+/* CSS Variables for Brand Colors */
 :root {
-  /* Core Brand Colors */
+  /* =========================
+     CORE BLUE PALETTE
+  ========================= */
+  --navy: #0a1f44;
+  --royal-blue: #0d47a1;
+  --sky-blue: #1e88e5;
+  --ice-blue: #e3f2fd;
 
-  --navy: #002b5c;
-  --charcoal: #333333;
-  --gold: #b38b59;
-  --light-gray: #f8f9fa;
+  /* =========================
+     NEUTRALS
+  ========================= */
+  --charcoal: #1f2933;
+  --slate: #4b5563;
+  --light-gray: #f5f7fb;
   --white: #ffffff;
-  --mutindagreen: #9D863F;
-  --mutindamaroon: rgb(119, 4, 4);
-  --mutindagreen-light: rgba(84, 102, 21, 0.1);
-  --mutindamaroon-light: rgba(119, 4, 4, 0.1);
-  --mutindagreen-dark: #9D853F;
-  --mutindamaroon-dark: rgb(95, 3, 3);
-  --gradient-primary: linear-gradient(135deg, var(--mutindamaroon), var(--mutindagreen));
-  --gradient-secondary: linear-gradient(135deg, var(--mutindagreen), var(--mutindagreen-dark));
 
+  /* =========================
+     ACCENTS (Luxury Feel)
+  ========================= */
+  --gold: #c7a14a;
+  --steel-blue: #90caf9;
 
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--mutindamaroon) 0%, var(--mutindagreen) 100%);
-  --gradient-secondary: linear-gradient(135deg, var(--mutindagreen) 0%, var(--mutindagreen-dark) 100%);
-  --gradient-gold: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-  --gradient-overlay: linear-gradient(135deg, rgba(119, 4, 4, 0.85) 0%, rgba(84, 102, 21, 0.75) 100%);
+  /* =========================
+     BRAND CUSTOM VARIABLES
+  ========================= */
+  --mutindagreen: #1e88e5;
+  --mutindamaroon: #0d47a1;
+  --mutindagreen-light: rgba(30, 136, 229, 0.12);
+  --mutindamaroon-light: rgba(13, 71, 161, 0.12);
+  --mutindagreen-dark: #0b3c78;
+  --mutindamaroon-dark: #061a3a;
 
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
-  --shadow-xl: 0 35px 80px rgba(0, 0, 0, 0.2);
+  /* =========================
+     GRADIENTS
+  ========================= */
+  --gradient-primary: linear-gradient(135deg, #0d47a1 0%, #1e88e5 100%);
+  --gradient-secondary: linear-gradient(135deg, #061a3a 0%, #0a1f44 100%);
+  --gradient-soft: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
 
+  /* =========================
+     UI HELPERS
+  ========================= */
+  --shadow-soft: 0 10px 30px rgba(13, 71, 161, 0.15);
+  --shadow-strong: 0 20px 50px rgba(6, 26, 58, 0.35);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
   /* Border Radius */
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
   --radius-xl: 32px;
 }
+
+  
+
 
 /* Global Styles */
 * {
@@ -48,11 +69,27 @@
 html {
   scroll-behavior: smooth;
 }
+        /* Remove default link styles globally */
+a {
+  color: inherit;           /* Keep the current text color */
+  text-decoration: none;    /* Remove underline */
+  transition: color 0.3s;   /* Optional: smooth hover if you want */
+}
+
+/* Optional: keep them same on hover, focus, active */
+a:hover,
+a:focus,
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
 
 body {
-  font-family: "Jost", sans-serif;
-  line-height: 1.6;
-  background-color: black;
+  line-height: 1.7;
+  color: black;
+  background-color: var(--white);
+  overflow-x: hidden;
+  font: "jost","serif";
 }
 
 /* Typography */
@@ -173,19 +210,29 @@ img {
   font-weight: 700;
 }
 
-/* Header */
+/* Header & Navigation */
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(15px);
-  z-index: 1000;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
   height: 100px;
-  transition: all 0.4s ease;
+
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+
+  z-index: 1000;
+  transition: background 0.3s ease;
 }
+
+/* Keep it transparent even after scroll */
+header.scrolled {
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
 
 .header-container {
   max-width: 1200px;
@@ -216,7 +263,6 @@ header {
   display: block;
 }
 
-/* Navigation */
 nav ul {
   display: flex;
   gap: 35px;
@@ -229,7 +275,7 @@ nav ul {
 nav ul li a {
   text-decoration: none;
   font-weight: 500;
-  color: var(--charcoal);
+  color: aliceblue;
   font-size: 16px;
   padding: 8px 2px;
   transition: all 0.3s ease;
@@ -265,7 +311,7 @@ nav ul li .btn {
   font-weight: 600;
   box-shadow: 0 6px 20px rgba(119, 4, 4, 0.3);
   margin-left: 10px;
-  color: white;
+  color: aliceblue;
 }
 
 nav ul li .btn:hover {
@@ -291,7 +337,7 @@ nav ul li .btn:hover {
 /* Page Header */
 .page-header {
   position: relative;
-  margin-top: 80px;
+  margin-top: 0px;
   height: 75vh;
   padding: 10rem 0 6rem;
   text-align: center;
@@ -300,7 +346,7 @@ nav ul li .btn:hover {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: linear-gradient(135deg, rgba(128, 4, 4, 0.753), rgba(121, 6, 6, 0.007)),
+  background: linear-gradient(135deg, rgba(5, 23, 83, 0.975), rgba(84, 102, 21, 0.75)),
     url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80") center/cover no-repeat;
   overflow: hidden;
 }
@@ -598,10 +644,11 @@ textarea.form-control {
 .map-section {
   padding: 0 0 5rem;
   color: var(--white);
+  background-color: black;
 }
 
 .map-section h1 {
-  color: var(--mutindamaroon-dark);
+  color: var(--mutindagreen);
   position: relative;
   padding-bottom: 0.5rem;
   font-family: "Garamond", "Times New Roman", serif;
@@ -629,11 +676,28 @@ textarea.form-control {
 
 /* FAQ Section */
 .faq-section {
-  background: linear-gradient(rgba(238, 239, 240, 0.973), rgba(248, 249, 250, 0.788)),
-    url("WhatsApp\ Image\ 2025-11-27\ at\ 20.12.18_d3f0f74b.jpg");
+  position: relative;
+
+  background:
+    linear-gradient(
+      rgba(14, 14, 15, 0.685),
+      rgba(3, 8, 14, 0.25)
+    ),
+    url("dk-muema-favicon.zwebp");
+
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+
+  padding: 100px 0;
 }
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 70px 0;
+    background-attachment: scroll;
+  }
+}
+
 
 .faq-section h2 {
   font-size: 2.8rem;
@@ -687,21 +751,31 @@ textarea.form-control {
 
 /* CTA Section */
 .cta-section {
+  position: relative;
   text-align: center;
-  background: var(--gradient-overlay),
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(4, 50, 119, 0.65),
+      rgba(84, 102, 21, 0.55)
+    ),
     url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80");
+
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
+
   color: var(--white);
   padding: 100px 60px;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
-  position: relative;
-  overflow: hidden;
   margin: 80px auto;
   max-width: 1400px;
+  overflow: hidden;
 }
+
 
 .cta-section h2 {
   color: var(--gold);
@@ -722,7 +796,7 @@ textarea.form-control {
   max-width: 800px;
   margin: 0 auto 50px;
   font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.95);
+  color: black;
   line-height: 1.8;
   position: relative;
   z-index: 2;
